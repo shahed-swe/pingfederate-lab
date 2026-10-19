@@ -1,0 +1,4 @@
+basicConstraints=CA:FALSE
+keyUsage=critical,digitalSignature,keyEncipherment
+extendedKeyUsage=serverAuth
+subjectAltName=DNS:pf.pingfed.lab,DNS:WIN-60PG2A911IE,IP:172.22.127.250

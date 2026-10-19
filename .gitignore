@@ -1,0 +1,12 @@
+# Secrets: these stay on this laptop only
+lab-credentials.txt
+backups/
+.env
+*.key
+*.p12
+*.pfx
+*.crt.old
+
+# Dependencies / editor / Office lock files
+node_modules/
+~$*

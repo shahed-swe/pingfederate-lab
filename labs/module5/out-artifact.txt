@@ -1,0 +1,17 @@
+# SAML 2.0 artifact = Base64( TypeCode 0x0004 | EndpointIndex | SourceID | MessageHandle )
+TypeCode      : 0004
+EndpointIndex : 0000
+SourceID      : 6a2212d62ca221ed1ef3e905cb783b5d01805522   = SHA-1("pingfed-lab-idp")
+MessageHandle : 31512c00b0723c6d5508031f7d89392d10de3e23   (random, one-time)
+SAMLart       : AAQAAGoiEtYsoiHtHvPpBct4O10BgFUiMVEsALByPG1VCAMffYk5LRDePiM=
+
+# 1) Front channel (browser): only the small artifact travels
+GET https://sp.lab.local/saml/acs?SAMLart=AAQAAGoiEtYsoiHtHvPpBct4O10BgFUiMVEsALByPG1VCAMffYk5LRDePiM%3D&RelayState=%2Fapp%2Forders%2F1234
+
+# 2) Back channel (SP server -> IdP, SOAP over TLS): the SP exchanges it for the real message
+POST https://pf.pingfed.lab:9031/idp/ARS.ssaml2
+<samlp:ArtifactResolve ID="_a1" Version="2.0" IssueInstant="..." Destination="https://pf.pingfed.lab:9031/idp/ARS.ssaml2">
+  <saml:Issuer>https://sp.lab.local/saml</saml:Issuer>
+  <samlp:Artifact>AAQAAGoiEtYsoiHtHvPpBct4O10BgFUiMVEsALByPG1VCAMffYk5LRDePiM=</samlp:Artifact>
+</samlp:ArtifactResolve>
+# 3) IdP answers with <samlp:ArtifactResponse> containing the full signed <samlp:Response>

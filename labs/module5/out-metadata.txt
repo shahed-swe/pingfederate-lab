@@ -1,0 +1,15 @@
+<md:EntityDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" entityID="pingfed-lab-idp">
+ <md:IDPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol" WantAuthnRequestsSigned="false">
+  <md:KeyDescriptor use="signing">
+   <ds:KeyInfo><ds:X509Data><ds:X509Certificate>MIID8TCCAlmgAwIBAgIUPutnuwc6ELYYYz/7Xxxg6F/qRpgw...</ds:X509Certificate></ds:X509Data></ds:KeyInfo>
+  </md:KeyDescriptor>
+  <md:ArtifactResolutionService Binding="urn:oasis:names:tc:SAML:2.0:bindings:SOAP" Location="https://pf.pingfed.lab:9031/idp/ARS.ssaml2" index="0"/>
+  <md:SingleLogoutService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="https://pf.pingfed.lab:9031/idp/SLO.saml2"/>
+  <md:SingleLogoutService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="https://pf.pingfed.lab:9031/idp/SLO.saml2"/>
+  <md:NameIDFormat>urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified</md:NameIDFormat>
+  <md:SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="https://pf.pingfed.lab:9031/idp/SSO.saml2"/>
+  <md:SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="https://pf.pingfed.lab:9031/idp/SSO.saml2"/>
+  <md:SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Artifact" Location="https://pf.pingfed.lab:9031/idp/SSO.saml2"/>
+ </md:IDPSSODescriptor>
+ <md:ContactPerson contactType="administrative"><md:Company>PingFed Lab</md:Company></md:ContactPerson>
+</md:EntityDescriptor>

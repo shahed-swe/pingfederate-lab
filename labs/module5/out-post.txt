@@ -1,0 +1,11 @@
+# HTTP-POST binding: the IdP returns this page; JavaScript auto-submits it to the SP ACS URL
+<html><body onload="document.forms[0].submit()">
+  <form method="POST" action="https://sp.lab.local/saml/acs">
+    <input type="hidden" name="SAMLResponse" value="PHNhbWxwOlJlc3BvbnNlIHhtbG5zOnNhbWxwPSJ1cm46b2FzaXM6bmFtZXM6...(5792 chars)"/>
+    <input type="hidden" name="RelayState"  value="/app/orders/1234"/>
+    <noscript><button type="submit">Continue</button></noscript>
+  </form>
+</body></html>
+
+# Base64-decoded SAMLResponse starts with:
+<samlp:Response xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol" xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion" ID="_c17b1076b5b02576f9fc8202be9...

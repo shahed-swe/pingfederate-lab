@@ -1,0 +1,25 @@
+# 1) SP builds an AuthnRequest (XML)
+<samlp:AuthnRequest xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol" xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion" ID="_52eb600611e1416a32e43c8400329806" Version="2.0" IssueInstant="2026-09-30T10:00:00Z" Destination="https://pf.pingfed.lab:9031/idp/SSO.saml2" ProtocolBinding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" AssertionConsumerServiceURL="https://sp.lab.local/saml/acs">
+  <saml:Issuer>https://sp.lab.local/saml</saml:Issuer>
+  <samlp:NameIDPolicy Format="urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified" AllowCreate="true"/>
+</samlp:AuthnRequest>
+
+# 2) HTTP-Redirect encoding: DEFLATE (575 -> 330 bytes) -> Base64 -> URL-encode
+SAMLRequest = fZJda8IwFIbv/RUh97Zp64oGKzhlTHBTrNvFbkZsjzOQJllOuo9/v7ZO5i4UcpOT5+W8D2SMolKWT2t/0Bt4rwE9...
+
+# 3) Browser is redirected (HTTP 302) to:
+https://pf.pingfed.lab:9031/idp/SSO.saml2?SAMLRequest=fZJda8IwFIbv%2FRUh97Zp64oGKzhlTHBTrNvFbkZsjzOQJllOuo9%2F
+v7ZO5i4UcpOT5%2BW8D2SMolKWT2t%2F0Bt4rwE9%2BaqURt49ZLR2mhuBErkWFSD3Bc%2BnD0seB4xbZ7wpjKJnkesJgQjOS6MpWcwz%2BnoT
+wy5lLI0iiAZRKpIYBkkxHDCWxKMhSyl5BocNn9Em3oQQa1ho9EL7ZsTitM9G%2FYRtI8ZZe14omTcOUgvfpQ7eW%2BRhaPeBlfptD2WgxI6PWB
+KFsrRhnq%2BCtnZMyfrX5lbqskGvi%2ByOEPL77XbdX6%2FyLSXTk9zMaKwrcDm4D1nA02b5VwRtWyBQphAqbDeHokA66REybm%2B8M3STi%2F
+g4PMdOMcsfm4qL%2BdooWXyTO%2BMq4S8bREHUTWTZ33corzVaKOReQtmIKGU%2BZw6Eh4x6VwMNJ73j4v9fZfID&RelayState=%2Fapp%2Fo
+rders%2F1234
+
+# 4) Signed variant (Signed AuthnRequests): query also carries SigAlg + Signature
+https://pf.pingfed.lab:9031/idp/SSO.saml2?SAMLRequest=fZJda8IwFIbv%2FRUh97Zp64oGKzhlTHBTrNvFbkZsjzOQJllOuo9%2F
+v7ZO5i4UcpOT5%2BW8D2SMolKWT2t%2F0Bt4rwE9%2BaqURt49ZLR2mhuBErkWFSD3Bc%2BnD0seB4xbZ7wpjKJnkesJgQjOS6MpWcwz%2BnoT
+wy5lLI0iiAZRKpIYBkkxHDCWxKMhSyl5BocNn9Em...
+
+# 5) IdP decodes: URL-decode -> Base64-decode -> INFLATE
+<samlp:AuthnRequest xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol" xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion...
+RelayState = /app/orders/1234

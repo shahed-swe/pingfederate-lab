@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<EntityDescriptor xmlns="urn:oasis:names:tc:SAML:2.0:metadata" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" entityID="pflab-node-app" ID="_2cee5b51a04968a6a8543b6eef7372f0309704a7">
+  <SPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol" AuthnRequestsSigned="true" WantAssertionsSigned="true">
+    <KeyDescriptor use="signing">
+      <ds:KeyInfo>
+        <ds:X509Data>
+          <ds:X509Certificate>MIIDTTCCAjWgAwIBAgIUEMlXKCuesBw2oMay8+If29eZc1owDQYJKoZIhvcNAQEL
+BQAwRzELMAkGA1UEBhMCQkQxFDASBgNVBAoMC1BpbmdGZWQgTGFiMSIwIAYDVQQD
+DBlwZmxhYi1ub2RlLWFwcCBTUCBTaWduaW5nMB4XDTI2MTAwNTEzNDcyNloXDTI4
+MTAwNDEzNDcyNlowRzELMAkGA1UEBhMCQkQxFDASBgNVBAoMC1BpbmdGZWQgTGFi
+MSIwIAYDVQQDDBlwZmxhYi1ub2RlLWFwcCBTUCBTaWduaW5nMIIBIjANBgkqhkiG
+9w0BAQEFAAOCAQ8AMIIBCgKCAQEAy1g/P6kq7i2Xm4awy/xlzm8ZsFx6SodAqyfI
+8yDGS0TsKRfvps26zaJpICNo88BKEYFR2FV/Ye9JBE47FyGTwStnTUk5DGnguz0U
+HY1/OvJCf/x3QnJKBE8vQO8MLK0rKM/I0m4pfJfHxN78lDrG0jy2A+gxm9G3XPMW
+jqUY9sHnBYvHJl5a4FMPRgUaKWTvpmYgoseRpuF8ap3HeuKDAR2GfiYlWLv1hoWH
+f72KgIAOP6TkzKuPbJg8ICjItJU1WEmPk3YqyyuSOkrGe3V7u+0Q+5UGRXxRlESb
+4IJRS0tnL8v+tTXnqzLBCOPLUWNGBNZgNia5KAXrOUJbzwP9QQIDAQABozEwLzAO
+BgNVHQ8BAf8EBAMCB4AwHQYDVR0OBBYEFGYQMBVr5IUdTa/gDxGJM8ap1R8qMA0G
+CSqGSIb3DQEBCwUAA4IBAQCXp6CiHeZHkEw38QcnFwJVcHC+pkG+IZUgbvG3Pq9N
+DX4MeZ5QKO3Z1NxbbnB6J6kGQInoGjwzj8venf3Uae7E7AgwMd4zxQpRKbm3M7ci
+1eDReKB04LNjKWskrisBo2q5+jh5vc0QMOzW9tPMC3aHK4bUhMW8fZJdmXuKbgdf
+tMNw0zcyXYZVn+td6DjULg7uAV64ioK1dlHvS/Vk07ZuJUQwxtdFn7zzvLZoqXnG
+fLR5YADFpuP4irua7Gptxk/1HNkG2EBRlrF9WXJyM7fZXhIG3rDAbxwsLbKXSVv5
+fpCKryAzX322/HBaOsx4OUsyYe6lbtH96CO1hpASuqbn
+</ds:X509Certificate>
+        </ds:X509Data>
+      </ds:KeyInfo>
+    </KeyDescriptor>
+    <SingleLogoutService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="http://localhost:3000/saml/slo"/>
+    <NameIDFormat>urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified</NameIDFormat>
+    <AssertionConsumerService index="1" isDefault="true" Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="http://localhost:3000/saml/acs"/>
+  </SPSSODescriptor>
+</EntityDescriptor>

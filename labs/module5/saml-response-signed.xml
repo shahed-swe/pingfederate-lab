@@ -1,0 +1,45 @@
+<samlp:Response xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol" xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion" ID="_c17b1076b5b02576f9fc8202be951033" Version="2.0" IssueInstant="2026-09-30T10:00:00Z" Destination="https://sp.lab.local/saml/acs" InResponseTo="_52eb600611e1416a32e43c8400329806">
+ <saml:Issuer>pingfed-lab-idp</saml:Issuer>
+ <samlp:Status><samlp:StatusCode Value="urn:oasis:names:tc:SAML:2.0:status:Success"/></samlp:Status>
+ <saml:Assertion ID="_a5b11ed1cae5494f860e293c5fa10eaa" Version="2.0" IssueInstant="2026-09-30T10:00:00Z">
+  <saml:Issuer>pingfed-lab-idp</saml:Issuer>
+  <ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#"><ds:SignedInfo><ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><ds:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/><ds:Reference URI="#_a5b11ed1cae5494f860e293c5fa10eaa"><ds:Transforms><ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/><ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></ds:Transforms><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><ds:DigestValue>ogGu8gm/KLlcI097pa+fcaOqo7RZy6cIm6tbFpnLoLo=</ds:DigestValue></ds:Reference></ds:SignedInfo><ds:SignatureValue>EYUUbuC5AU+vnwBBWngsV5U7a5Z0XtZU19+5Lnhq3YZ3Gq2CURoAFa2x4M3/3iE3yuKZJ5e/74oiTWGM8pSuxB3IK650CfsU8EuMRRGPLTL/VEVLpc3vzv1qlN7KAUk7QQAr4XQjeOCDJQ37/mISaE+hvZ7EbodwyQ+mPJwBtOcATa5dTRXk3wcXdL2mNDdX/zzfB4BhE1UbIgJqxmuzgtnVpO8fCDt4M+LtAust17HdL3+hrqbFCcnnmHSJZ6I7GKXjxRQCejl7GJVPFl/OILAQbOTrqJANi9A40BRuLfGRl0zvBRQq1ILXob24ai6zjNqWZJmfV+AMNiNOtyG6eQ==</ds:SignatureValue><ds:KeyInfo><ds:X509Data><ds:X509Certificate>MIID8TCCAlmgAwIBAgIUPutnuwc6ELYYYz/7Xxxg6F/qRpgwDQYJKoZIhvcNAQEL
+BQAwQTELMAkGA1UEBhMCQkQxFDASBgNVBAoMC1BpbmdGZWQgTGFiMRwwGgYDVQQD
+DBNQaW5nRmVkIExhYiBSb290IENBMB4XDTI2MDkyOTE3MDQwOVoXDTI4MDkyODE3
+MDQwOVowRTELMAkGA1UEBhMCQkQxFDASBgNVBAoMC1BpbmdGZWQgTGFiMSAwHgYD
+VQQDDBdQaW5nRmVkIExhYiBJZFAgU2lnbmluZzCCASIwDQYJKoZIhvcNAQEBBQAD
+ggEPADCCAQoCggEBALCJVBIzRYnf/pTaL3xyX7z/bd3Tn78TkDG8KSYKdoC4Xd0N
+Cya5J0E4EEe2++ipKhYA+/Ge5EKjjQKdomzh4pYgAJ2kdHiSWDqx2Kit8bDx5knw
+AogqBmoMrLfnVqt2TGSJ75fNmviUUzClIcZPrqmjGf/g/Si7dKu9du3GOw0Y6bZW
+6QP8wRmE0M7t6EF81//VVp60QitXjrGP/ycMOHGqfDunP8VSTvtF5HSbMRnokxUY
+tCLgOQahbWuUETH8J7e0tzjT915ok1nYvfaMAeRnIA6isvhtdGTpLMT5Ai9SR/ht
+i/O0QC2ypZEAb7U6fyNu6zAYsACIY7p/i2M4ANcCAwEAAaNdMFswCQYDVR0TBAIw
+ADAOBgNVHQ8BAf8EBAMCBsAwHQYDVR0OBBYEFKeuZWyiMkcVaGUeJSGZS2LiN2Bx
+MB8GA1UdIwQYMBaAFMnwru3Rc31w0t2uxEjQOfwaOleaMA0GCSqGSIb3DQEBCwUA
+A4IBgQDAy3De8dqEFdGTycoNdGwjmnOl/ZFPMFnlx7BlSarU920r47l63e9pByTt
+K1KV1UwdFAlo3WUZeWhkGow20jLnJfkE+xtIppjI9PYNlUEv7DiWjEeQvd1n0/xU
+hDBKwDRU7DHZhstjeDZxBAAXoDdxcSQWZH4UPH541a1NFcne/VKjUQXJxGlVGeI3
+wNB9NKv+yXfngTJmHc9ZLs36fzMdHn2qJsdkHnQ9YIK9New4s/e2IUZ3aB8XoEEq
+dredFFV7WF5CVE4lJ2cinTOh1bRdBhWRok/+dvBManClewda1oRp5ZfwJLsoFR6q
+4RWnFtmtuB5E84iug40efwqhkq3CQ/53Xe5VgMlwlWfEw3Zo6TuHqXtaXXqx3VMA
+tTlv/6/Ex2hLhS+RAblPmqgl4DUxNbrZfvKnLAVyUG6SrlwWuU0eEfuCNHJ7fsdR
+2BokXdw2LsmHYOKp5BgFZXVDQcDWHCdkypoJ28QIoIZ79vbS3AKrcTIG4Nqq9uTT
+9vJWsHY=
+</ds:X509Certificate></ds:X509Data></ds:KeyInfo></ds:Signature>
+  <saml:Subject>
+   <saml:NameID Format="urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified">testa</saml:NameID>
+   <saml:SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer">
+    <saml:SubjectConfirmationData InResponseTo="_52eb600611e1416a32e43c8400329806" NotOnOrAfter="2026-09-30T10:05:00Z" Recipient="https://sp.lab.local/saml/acs"/>
+   </saml:SubjectConfirmation>
+  </saml:Subject>
+  <saml:Conditions NotBefore="2026-09-30T09:55:00Z" NotOnOrAfter="2026-09-30T10:05:00Z">
+   <saml:AudienceRestriction><saml:Audience>https://sp.lab.local/saml</saml:Audience></saml:AudienceRestriction>
+  </saml:Conditions>
+  <saml:AuthnStatement AuthnInstant="2026-09-30T10:00:00Z" SessionIndex="_a5b11ed1cae5494f860e293c5fa10eaa">
+   <saml:AuthnContext><saml:AuthnContextClassRef>urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport</saml:AuthnContextClassRef></saml:AuthnContext>
+  </saml:AuthnStatement>
+  <saml:AttributeStatement>
+   <saml:Attribute Name="email"><saml:AttributeValue>testa@pingfed.lab</saml:AttributeValue></saml:Attribute>
+   <saml:Attribute Name="memberOf"><saml:AttributeValue>insgc</saml:AttributeValue></saml:Attribute>
+  </saml:AttributeStatement>
+ </saml:Assertion></samlp:Response>
