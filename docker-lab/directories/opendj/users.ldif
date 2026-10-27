@@ -1,0 +1,124 @@
+# OpenDJ seed data for the PingFederate lab (imported once, on first start)
+dn: ou=People,dc=pingfed,dc=lab
+objectClass: top
+objectClass: organizationalUnit
+ou: People
+
+dn: ou=Groups,dc=pingfed,dc=lab
+objectClass: top
+objectClass: organizationalUnit
+ou: Groups
+
+dn: uid=ayesha.rahman,ou=People,dc=pingfed,dc=lab
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+uid: ayesha.rahman
+cn: Ayesha Rahman
+sn: Rahman
+givenName: Ayesha
+displayName: Ayesha Rahman
+mail: ayesha.rahman@pingfed.lab
+title: Software Engineer
+departmentNumber: Engineering
+employeeNumber: E1001
+userPassword: Lab-Pass123!
+
+dn: uid=rahim.uddin,ou=People,dc=pingfed,dc=lab
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+uid: rahim.uddin
+cn: Rahim Uddin
+sn: Uddin
+givenName: Rahim
+displayName: Rahim Uddin
+mail: rahim.uddin@pingfed.lab
+title: IAM Analyst
+departmentNumber: Security
+employeeNumber: E1002
+userPassword: Lab-Pass123!
+
+dn: uid=farhan.ahmed,ou=People,dc=pingfed,dc=lab
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+uid: farhan.ahmed
+cn: Farhan Ahmed
+sn: Ahmed
+givenName: Farhan
+displayName: Farhan Ahmed
+mail: farhan.ahmed@pingfed.lab
+title: Product Manager
+departmentNumber: Product
+employeeNumber: E1003
+userPassword: Farhan#2026
+
+dn: uid=sadia.khan,ou=People,dc=pingfed,dc=lab
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+uid: sadia.khan
+cn: Sadia Khan
+sn: Khan
+givenName: Sadia
+displayName: Sadia Khan
+mail: sadia.khan@pingfed.lab
+title: QA Engineer
+departmentNumber: Engineering
+employeeNumber: E1004
+userPassword: Sadia#2026
+
+dn: uid=tanvir.hasan,ou=People,dc=pingfed,dc=lab
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+uid: tanvir.hasan
+cn: Tanvir Hasan
+sn: Hasan
+givenName: Tanvir
+displayName: Tanvir Hasan
+mail: tanvir.hasan@pingfed.lab
+title: DevOps Engineer
+departmentNumber: Infrastructure
+employeeNumber: E1005
+userPassword: Tanvir#2026
+
+dn: uid=mitu.akter,ou=People,dc=pingfed,dc=lab
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+uid: mitu.akter
+cn: Mitu Akter
+sn: Akter
+givenName: Mitu
+displayName: Mitu Akter
+mail: mitu.akter@pingfed.lab
+title: Finance Analyst
+departmentNumber: Finance
+employeeNumber: E1006
+userPassword: Mitu#2026
+
+dn: cn=lab-users,ou=Groups,dc=pingfed,dc=lab
+objectClass: top
+objectClass: groupOfUniqueNames
+cn: lab-users
+uniqueMember: uid=ayesha.rahman,ou=People,dc=pingfed,dc=lab
+uniqueMember: uid=rahim.uddin,ou=People,dc=pingfed,dc=lab
+uniqueMember: uid=farhan.ahmed,ou=People,dc=pingfed,dc=lab
+uniqueMember: uid=sadia.khan,ou=People,dc=pingfed,dc=lab
+uniqueMember: uid=tanvir.hasan,ou=People,dc=pingfed,dc=lab
+uniqueMember: uid=mitu.akter,ou=People,dc=pingfed,dc=lab
+
+dn: cn=lab-admins,ou=Groups,dc=pingfed,dc=lab
+objectClass: top
+objectClass: groupOfUniqueNames
+cn: lab-admins
+uniqueMember: uid=rahim.uddin,ou=People,dc=pingfed,dc=lab
+uniqueMember: uid=tanvir.hasan,ou=People,dc=pingfed,dc=lab

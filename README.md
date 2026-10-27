@@ -10,9 +10,23 @@ Hands-on notes and a test application from learning **PingFederate 13.1** in a h
 | [PingFederate_Hands-on_Checklist.md](PingFederate_Hands-on_Checklist.md) | Step-by-step build checklist, from data store to OIDC |
 | [PingFederate_OIDC_PKCE_Guide.md](PingFederate_OIDC_PKCE_Guide.md) | OIDC with Authorization Code + PKCE (S256), field by field, with tests, JWKS and token introspection exercises |
 | `PingFederate_Module*.docx`, `PingFederate_Course_Concepts*.docx` | Course module write-ups (building blocks, certificates, SAML fundamentals) |
+| [PingFederate_OIDC_Admin_SSO_MFA_Guide.md](PingFederate_OIDC_Admin_SSO_MFA_Guide.md) | Step-by-step guide (Bangla): PCV → Identifier First → admin-only rule → sessions → PingOne MFA / Protect → policy → two OIDC apps doing SSO |
+| [docker-lab/](docker-lab/) | Docker Compose version of the whole lab on a Mac: PingFederate 13.1.3 + OpenDJ + Samba AD, seed users, Admin API setup scripts for OIDC and SAML |
 | [pingfed-test-app/](pingfed-test-app/) | Node.js/Express relying party: OIDC (code + PKCE, confidential or public client), SAML SP-initiated SSO and Single Logout, a JWKS/introspection "Token lab", diagnostics |
 | [labs/](labs/) | Small scripts and sample output for the certificate and SAML modules |
 | [sp-metadata.xml](sp-metadata.xml) | SAML metadata of the test app |
+
+## Docker lab (no VM)
+
+```bash
+cd docker-lab
+cp .env.example .env                      # lab passwords; edit if you like
+cp /path/to/PingFederate-13.1-Development.lic .   # your licence (gitignored)
+docker compose up -d                      # PingFederate :9999/:9031, OpenDJ :1389, Samba AD :10389
+node setup-oidc-lab.js && node setup-saml-lab.js   # configures PingFederate for ../pingfed-test-app
+```
+
+See [docker-lab/README.md](docker-lab/README.md) for URLs, credentials and the user list.
 
 ## Lab layout
 

@@ -1,0 +1,91 @@
+services:
+  pingfederate:
+    image: pingidentity/pingfederate:${PF_IMAGE_TAG:-2609-13.1.3}
+    container_name: pingfederate
+    hostname: pingfederate
+    restart: unless-stopped
+    environment:
+      PING_IDENTITY_ACCEPT_EULA: "YES"
+      # Create the initial admin account on first boot with this username/password
+      # (username is applied by the custom hook in ./hooks)
+      ROOT_USER: ${PF_ADMIN_USERNAME:-admin}
+      CREATE_INITIAL_ADMIN_USER: "true"
+      PING_IDENTITY_PASSWORD: ${PF_ADMIN_PASSWORD:-2FederateM0re}
+      PF_ADMIN_PUBLIC_HOSTNAME: localhost
+      PF_ADMIN_PUBLIC_BASEURL: https://localhost:${PF_ADMIN_PORT:-9999}
+      PF_ENGINE_PUBLIC_HOSTNAME: localhost
+      # Enable basic auth on the admin REST API (https://localhost:9999/pf-admin-api/v1)
+      PF_ADMIN_API_AUTHENTICATION: native
+      # Skip the phone-home license check against license.pingidentity.com
+      MUTE_LICENSE_VERIFICATION: "yes"
+    ports:
+      - "${PF_ADMIN_PORT:-9999}:9999"   # Admin console / Admin API
+      - "${PF_ENGINE_PORT:-9031}:9031"  # Runtime engine (SSO, OAuth, OIDC)
+    volumes:
+      # Your license file is copied into the server's conf dir on every start
+      - ./PingFederate-13.1-Development.lic:/opt/in/instance/server/default/conf/pingfederate.lic:ro
+      # Persist all configuration/data across restarts and recreates
+      - pingfederate-data:/opt/out
+      # Custom hook: lets the initial admin username be set via ROOT_USER
+      - ./hooks:/opt/in/hooks:ro
+    healthcheck:
+      test: ["CMD", "sh", "-c", "curl -ksf https://localhost:9031/pf/heartbeat.ping"]
+      interval: 15s
+      timeout: 5s
+      retries: 40
+      start_period: 60s
+
+  opendj:
+    image: openidentityplatform/opendj:5.1.2
+    container_name: opendj
+    hostname: opendj
+    restart: unless-stopped
+    environment:
+      BASE_DN: dc=pingfed,dc=lab
+      ROOT_USER_DN: cn=Directory Manager
+      ROOT_PASSWORD: ${OPENDJ_ADMIN_PASSWORD:-Password1}
+      ADD_BASE_ENTRY: --addBaseEntry
+    ports:
+      - "1389:1389"   # LDAP
+      - "1636:1636"   # LDAPS
+      - "4444:4444"   # admin connector
+    volumes:
+      - ./directories/opendj/users.ldif:/opt/opendj/bootstrap/data/users.ldif:ro   # imported on first start
+      - opendj-data:/opt/opendj/data
+    healthcheck:
+      test: ["CMD", "sh", "-c", "/opt/opendj/bin/ldapsearch -h localhost -p 1389 -b '' -s base 'objectclass=*' >/dev/null"]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+      start_period: 30s
+
+  samba-ad:
+    image: smblds/smblds:latest
+    container_name: samba-ad
+    hostname: dc1
+    restart: unless-stopped
+    environment:
+      REALM: PINGFED.LAB
+      DOMAIN: PINGFED
+      ADMINPASS: ${AD_ADMIN_PASSWORD:-Admin-Pass123!}
+      LAB_USER_PASSWORD: ${LAB_USER_PASSWORD:-Lab-Pass123!}
+      INSECURE_LDAP: "true"     # lab only: allow simple bind over plain LDAP (389)
+    ports:
+      - "10389:389"   # LDAP   (ldap://localhost:10389)
+      - "10636:636"   # LDAPS  (ldaps://localhost:10636)
+    volumes:
+      - ./directories/ad/10-users.sh:/entrypoint.d/10-users.sh:ro   # creates lab users on start
+      - samba-data:/var/lib/samba
+      - samba-config:/etc/samba
+    healthcheck:
+      test: ["CMD", "/healthcheck.sh"]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+      start_period: 30s
+
+volumes:
+  pingfederate-data:
+  opendj-data:
+  samba-data:
+  samba-config:

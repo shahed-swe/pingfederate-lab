@@ -10,3 +10,5 @@ backups/
 # Dependencies / editor / Office lock files
 node_modules/
 ~$*
+*.lic
+docker-lab/.env
