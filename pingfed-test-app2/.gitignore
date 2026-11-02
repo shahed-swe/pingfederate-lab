@@ -1,0 +1,6 @@
+node_modules/
+.env
+*.crt
+*.key
+app.log
+node_modules
